@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Catch it!</title>
+  <meta name="description" content="The Quest Kids Coding with HTML & JS by Max Wainewright">
+     <!-- page 20-27 -->
+  <meta name="keywords" content="HTML, CSS, JavaScript, WHS, Wellington High School">
+  <meta name="author" content="John Barrow">
+      <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<div style='background-color:dodgerblue; width:640px;'>
+	<canvas id="gameCanvas" width="640" height="480"></canvas>
+</div>
+<div style='display:block;'>
+<img id='cookie' src='cookie.png' alt="cookie">
+<img id='monster' src='monstera.png' alt="monster">
+</div>
+<body>
+</body>
+<script>
+var ctx=gameCanvas.getContext("2d");
+var x=300, y=50, monsterX=300, changeX=0, score=0;
+var gameTimer=setInterval(mainLoop,20);
+function mainLoop(){
+	ctx.clearRect(0,0,640,480);
+	ctx.font="30px Arial";
+	ctx.fillText("Score: "+score,10,30);
+	ctx.drawImage(cookie,x,y,80,80);
+	y+=3;
+	if(y>480){y=-80; x=Math.random()*600;}
+	ctx.drawImage(monster,monsterX,400,80,80);
+    	ctx.drawImage(monster,monsterX,400,80,80);
+	monsterX+=changeX;
+	checkForHits();
+	}
+	
+document.onkeydown=keyPressed;
+function keyPressed(e){
+	var k=e.keyCode;
+	if(k==37){changeX=-2;}
+	if(k==39){changeX=2;}
+	}
+function checkForHits(){
+	if((Math.abs(400-y)<60)&&
+		(Math.abs(monsterX-x)<60)){
+		score+=1;
+		y=-80; x=Math.random()*600;
+	}
+}
+setTimeout(gameOver,30000);
+function gameOver(){
+	clearInterval(gameTimer);
+	ctx.font="80px Arial";
+	ctx.fillText("Game Over",100,250);
+	}
+</script>
+<nav>
+        <ul>
+            <li><strong>Catch it</strong></li>
+            <li><a href="BalloonGame.html"><button>BalloonGame</button> </a></li>
+            <li><a href="Tenis.html"><button>Tenis</button></a></li>
+            <li><a href="snake.html"><button>snake</button></a></li>
+            <li><a href="tank.html"><button>tank</button></a></li>
+			<li><a href="juscookin.html"><button>home</button></a></li>
+        </ul>
+</html>
+

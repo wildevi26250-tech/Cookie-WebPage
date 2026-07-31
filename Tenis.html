@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+</head>
+<title>JS Tennis</title>
+  <meta name="description" content="The Quest Kids Coding with HTLM & JS by Max Wainewright">
+     <!-- page 14-19 -->
+  <meta name="keywords" content="HTML, CSS, JavaScript, WHS,">
+  <meta name="author" content="John Barrow">
+
+  <h1>Tenis</h1>
+</head>
+<style>
+    h1{
+        text-align: right;
+    }
+    body{
+        background-color: aqua;
+    }
+	#board{position:absolute;
+		width:550px; height:450px;
+		background-color:lightgreen;}
+	#bat{position:absolute;
+		top:420px; width:80px; height:20px;
+		background-color:blue;}
+	#ball{position:absolute;
+		width:48px; height:48px;
+		border-radius:24px;
+		background-color:yellow;}
+</style>
+<body onmousemove="moveBat(event)">
+<div id='board'></div>
+<div id='bat'></div>
+<div id='ball'></div>
+</body>
+<script>
+var x=100, y=100, speedX=2, speedY=2, batX=0;
+function moveBat(event){
+batX=event.clientX;
+bat.style.left=batX+'px';
+}
+function moveBall(){
+x=x+speedX;
+y=y+speedY;
+ball.style.left=x+'px';
+ball.style.top=y+'px';
+
+if(x>530)speedX=-2;
+if(x<0)speedX=2;
+if(y<0)speedY=2;
+if((y>372)&&(Math.abs(batX-x)<60)){speedY=-2;}
+if(y>450){
+alert('game over');
+clearInterval(timer);
+}
+}
+var timer=setInterval(moveBall, 10);
+</script>
+    <nav>
+        <ul>
+            <li><strong>Tenis</strong></li>
+            <li><a href="BalloonGame.html"><button>BalloonGame</button> </a></li>
+            <li><a href="Catch it.html"><button>Catch it</button></a></li>
+            <li><a href="snake.html"><button>snake</button></a></li>
+            <li><a href="tank.html"><button>tank</button></a></li>
+            <li><a href="juscookin.html"><button>home</button></a></li>
+        </ul>
+
+</html>

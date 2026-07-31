@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Be cookin</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Here is an unrelated picture</h1>
+    <img src="ayeaye.png" alt="A creepy baby ayeaye" width="400" height="400"> 
+    
+    <nav>
+        <ul>
+            <li><strong>Home</strong></li>
+            <li><a href="BalloonGame.html"><button>BalloonGame</button> </a></li>
+            <li><a href="Tenis.html"><button>Tenis</button></a></li>
+            <li><a href="Catch it.html"><button>Catch it</button></a></li>
+            <li><a href="snake.html"><button>snake</button></a></li>
+            <li><a href="tank.html"><button>tank</button></a></li>
+        </ul>
+    </nav>
+    <button id="playBtn">Play Credits</button>
+
+<div id="credits-container" class="hidden">
+  <div class="credits-roll">
+    <h2>Games BY</h2>
+    <p>Google classroom</p>
+    <p>and one embeded one from online games</p>
+    <h2>code</h2>
+    <p>ME</p>
+    <p>And some online tutorials</p>
+    <h2>The End</h2>
+  </div>
+</div>
+
+</body>
+<style>
+.hidden {
+  display: none;
+}
+
+#credits-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  overflow: hidden;
+  text-align: center;
+}
+
+.credits-roll {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+}
+
+.rolling {
+  animation: rollUp 10s linear forwards;
+}
+
+@keyframes rollUp {
+  0% { top: 100%; }
+  100% { top: -100%; }
+}
+</style>
+<script>
+const btn = document.getElementById('playBtn');
+const container = document.getElementById('credits-container');
+const roll = document.querySelector('.credits-roll');
+
+btn.addEventListener('click', () => {
+  container.classList.remove('hidden');
+  roll.classList.add('rolling');
+});
+
+</script>
+</html>

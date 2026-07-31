@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Snake</title>
+  <meta name="description" content="The Quest Kids Coding with HTLM & JS by Max Wainewright">
+<!-- page 48-53 -->
+  <meta name="keywords" content="HTML, CSS, JavaScript, WHS, Wellington High School">
+  <meta name="author" content="John Barrow">
+      <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a; 
+            display: flex;
+            justify-content: center;
+            align-items: center;       
+        }
+        .game-container {
+            background-color: Dodgerblue; 
+            height: 480px; 
+            width: 640px;
+            padding: 20px;             
+            box-sizing: content-box;   
+            border-radius: 12px;      
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+        }
+    </style>
+</head>
+<audio id='endMp3' src="https://maxw.com/low.mp3"></audio>
+<audio id='turnMp3' src="https://maxw.com/high.mp3"></audio>
+<body>
+    <div class="game-container"> 
+        <canvas id="gameCanvas" width="640" height="480"></canvas> 
+    </div> 
+</body>
+
+
+<script>
+	var ctx=gameCanvas.getContext("2d");
+	var x=240,y=180,dir=90,score=0;
+	drawBackground();
+	function drawBackground(){
+		ctx.strokeStyle="orange";
+		ctx.lineWidth=40;
+		ctx.strokeRect(0, 0, 640, 480);
+	}
+	var gameTimer=setInterval(mainLoop, 50);
+	function mainLoop(){
+		ctx.fillStyle='orange';
+		ctx.fillRect(x,y,9,9);
+		if(dir==90){x+=10;}
+		if(dir==180){y+=10;}
+		if(dir==-90){x-=10;}
+		if(dir==0){y-=10;}
+		checkPixelColor(); 
+
+	}
+    score++; 
+        ctx.fillStyle = 'Dodgerblue';
+        ctx.fillRect(40, 40, 120, 30); 
+        ctx.fillStyle = 'black'; 
+        ctx.font = "20px Arial"; 
+        ctx.fillText("Score " + score, 45, 62);
+	
+	function checkPixelColor(){
+		var col=ctx.getImageData(x,y,1,1).data;
+		if(col[3]!=0){
+			endMp3.play();
+			clearInterval(gameTimer);
+			ctx.font="80px Arial";
+			ctx.fillText("Game Over",100,250);
+		}
+	}
+	document.onkeydown=handleKey;
+	function handleKey(e){
+		var k=e.keyCode;
+		if(k==38){dir=0;}
+		if(k==39){dir=90;}
+		if(k==40){dir=180;}
+		if(k==37){dir=-90;}
+		turnMp3.currentTime=0;
+		turnMp3.play()
+	}
+</script>
+    <nav>
+        <ul>
+            <li><strong>Snake</strong></li>
+            <li><a href="BalloonGame.html"><button>BalloonGame</button> </a></li>
+            <li><a href="Tenis.html"><button>Tenis</button></a></li>
+            <li><a href="Catch it.html"><button>Catch it</button></a></li>
+            <li><a href="tank.html"><button>tank</button></a></li>
+            <li><a href="juscookin.html"><button>home</button></a></li>
+        </ul>
+
+</html>

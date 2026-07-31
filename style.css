@@ -1,0 +1,24 @@
+
+
+h1 {
+    font-family: sans-serif;
+    color: aqua;
+}
+body {
+    background-color: rgb(13, 12, 12);
+    font-size: medium;
+    padding: 50px;
+    text-align: center;
+}
+p {
+    color: aqua;
+}
+head {
+    color: aqua;
+}
+button {
+color: #1a1a1a;
+}
+a {
+    color: #1a1a1a;
+}
