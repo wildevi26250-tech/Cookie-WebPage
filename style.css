@@ -16,9 +16,21 @@ p {
 head {
     color: aqua;
 }
-button {
-color: #1a1a1a;
+.button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
-a {
-    color: #1a1a1a;
+.button img {
+    display: block;
+    width: 75px;
+    height: auto;
 }
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+  }
